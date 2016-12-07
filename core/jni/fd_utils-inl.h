@@ -377,6 +377,9 @@ class FileDescriptorTable {
       if (fd == -1) {
         continue;
       }
+      if (fd == 5) {
+        continue;
+      }
 
       FileDescriptorInfo* info = FileDescriptorInfo::createFromFd(fd);
       if (info == NULL) {
@@ -410,6 +413,9 @@ class FileDescriptorTable {
     while ((e = readdir(d)) != NULL) {
       const int fd = ParseFd(e, dir_fd);
       if (fd == -1) {
+        continue;
+      }
+      if (fd == 5) {
         continue;
       }
 
